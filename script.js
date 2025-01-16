@@ -1,36 +1,10 @@
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
+function startchangingcontent(){
+  let array = ['Frontend Developer', 'Web Developer', 'UI/UX Designer'];
+  let index=0;
+  setInterval(() => {
+    document.getElementById('changingcontent').innerHTML = array[index];
+    index = (index + 1) % array.length;
+  }, 1000);
+}
 
-window.onscroll = () => {
-  sections.forEach(sec => {
-    let top = window.scrollY;
-    let offset = sec.offsetTop - 150;
-    let height = sec.offsetHeight;
-
-    if (top >= offset && top < offset + height) {
-      navLinks.forEach(links => {
-        links.classList.remove('active');
-      });
-      document.querySelector('header nav a[href="#' + id + '"]').classList.add('active');
-    }
-  });
-};
-
-
-
-
-
-menuIcon.onclick = () => {
-  menuIcon.classList.toggle('bx-x');
-  navbar.classList.toggle('active');
-
-  sections.forEach(section => {
-    section.classList.remove('active');
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-  });
-};
+startchangingcontent();
